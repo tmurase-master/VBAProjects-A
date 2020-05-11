@@ -9,6 +9,7 @@ class timestamp_manager{
  private:
   struct utimbuf current_time;
   
+  
 
  public:
   void set_current_time();
