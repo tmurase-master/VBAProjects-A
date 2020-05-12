@@ -17,11 +17,11 @@ Sprit1　（5月18日マデ）
 
 役割分担
 
-	・ROMgit：
+	・ROMgit：  フォルダ指定してあるファイル一覧を表示
 
-	・Kuwakeen：
+	・Kuwakeen：結果を渡してタイムスリップ更新
 
-	・（name）：
+	・（name）：ファイル探す
 
 	・harry：
 
