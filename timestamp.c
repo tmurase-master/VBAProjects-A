@@ -4,8 +4,6 @@
 #include<utime.h>
 #include<sys/stat.h>
 
-
-
 int ts_update_currenttime(char *filepath);
 int ts_update_specifiedtime(char *filepath, struct utimbuf *settime);
 int ts_update_specifiedYMD(char *filepath, int year,int month, int day);
