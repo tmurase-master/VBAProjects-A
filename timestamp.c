@@ -38,7 +38,6 @@ int ts_update_specifiedYMD(char *filepath, int year,int month, int day, int hour
     ct.modtime = ct.actime;
     int r =utime(filepath, &ct);
     //utime("test.rtf", &ct);
-
     if(r == 0){
         printf("成功\n");
         return r;
