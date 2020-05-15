@@ -17,6 +17,7 @@ int ts_update_currenttime(char *filepath){
     int r = utime(filepath, &ct);
 
     return r;
+    
 }
 
 int ts_update_specifiedtime(char *filepath, struct utimbuf *settime){
