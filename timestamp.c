@@ -36,10 +36,16 @@ int ts_update_specifiedYMD(char *filepath, int year,int month, int day, int hour
 
     ct.actime = mktime(&YMD);
     ct.modtime = ct.actime;
-    utime(filepath, &ct);
+    int r =utime(filepath, &ct);
     //utime("test.rtf", &ct);
 
-
+    if(r == 0){
+        printf("成功\n");
+        return r;
+    }else{
+        printf("失敗\n");
+        return r;
+    }
 }
 
 
