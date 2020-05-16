@@ -39,6 +39,8 @@ int ts_update_specifiedtime(char *filepath, struct utimbuf *settime){
     else return 1;
 }
 
+//とりあえずこっち( harry58034)
+)
 int ts_update_specifiedYMD(char *filepath, int year,int month, int day, int hour, int min, int sec){
     
     struct tm YMD = {sec, min, hour, day, (month-1), (year-1900)};
@@ -93,6 +95,8 @@ int main(void){
 
     char file[9] = "test.rtf"; 
     ts_update_specifiedYMD(file, 1986,8,1,12,10,5);
+
+    printf("updata!");
     //ts_update_currenttime("test.rtf");
     //printf("test");
 
