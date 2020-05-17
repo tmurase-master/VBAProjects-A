@@ -29,7 +29,7 @@ int ts_update_currenttime(char *filepath){
     return r;
     
 }
-
+/* コンパイルワーニングでるので一度コメントアウト  ごめんなさい（harry58034)
 int ts_update_specifiedtime(char *filepath, struct utimbuf *settime){
 
     if(settime->actime != NULL){
@@ -38,9 +38,10 @@ int ts_update_specifiedtime(char *filepath, struct utimbuf *settime){
     }
     else return 1;
 }
+*/
 
 //とりあえずこっち( harry58034)
-)
+
 int ts_update_specifiedYMD(char *filepath, int year,int month, int day, int hour, int min, int sec){
     
     struct tm YMD = {sec, min, hour, day, (month-1), (year-1900)};
@@ -52,10 +53,10 @@ int ts_update_specifiedYMD(char *filepath, int year,int month, int day, int hour
     //utime("test.rtf", &ct);
 
     if(r == 0){
-        printf("成功\n");
+        printf("成功:success\n");
         return r;
     }else{
-        printf("失敗\n");
+        printf("失敗:Failure\n");
         return r;
     }
 }
@@ -78,13 +79,15 @@ void get_filepath(char *filepath){
     getcwd(pathname, PATHNAME_SIZE);
     fprintf(stdout,"Before FilePath:%s\n", pathname);
 
+    //カレントディレクトリ取得（filepathへ）　by harry58034
+    getcwd(filepath, PATHNAME_SIZE);
+ 
     // カレントディレクトリ変更  
     chdir(filepath); // チェンジディレクトリ
     getcwd(pathname, PATHNAME_SIZE);
     fprintf(stdout,"After FilePath:%s\n", pathname);
 }
 //
-
 
 int main(void){
 
@@ -93,8 +96,16 @@ int main(void){
     get_filepath(filepath);
     //
 
-    char file[9] = "test.rtf"; 
-    ts_update_specifiedYMD(file, 1986,8,1,12,10,5);
+    fprintf(stdout,"main-Function filename FilePath:%s\n", filepath);
+    
+    
+    char filename[24] = "test.rtf"; 
+    strcat(filepath,"\\");
+    strcat(filepath,"test.rtf");
+
+    fprintf(stdout,"main-Function2 filename FilePath:%s\n", filepath);
+
+    ts_update_specifiedYMD(filepath, 1981,8,1,12,10,5);
 
     printf("updata!");
     //ts_update_currenttime("test.rtf");
