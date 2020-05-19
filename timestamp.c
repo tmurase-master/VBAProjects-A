@@ -5,7 +5,6 @@
 #include<sys/stat.h>
 
 //清水追加分
-#include<stdio.h>
 #include<string.h>
 #include<unistd.h>
 #define PATHNAME_SIZE 512
@@ -72,26 +71,26 @@ void get_filepath(char *filepath){
 
    // 変数定義
     char pathname[PATHNAME_SIZE];  // ファイルパス
-    char cdp[256]; //任意のファイルパス入力用
 
     // 変数初期化
     memset(pathname, '\0', PATHNAME_SIZE);
 
-    // 任意のファイルパスの入力
-    printf("Input Current Directory > ");
+    // 対象のフォルダのパスを入力、変数filepathに保管（自分の環境だと日本語が文字化けしてしまうので、英語もいれてあります）
+    printf("指定のフォルダのパスを入力してください:Input Specified FolderPath > ");
 	scanf("%[^\n]%*c", filepath);
 
+    //以下カレントディレクトリ関係は必要ないのでコメントアウト
     // カレントディレクトリ取得
-    getcwd(pathname, PATHNAME_SIZE);
-    fprintf(stdout,"Before FilePath:%s\n", pathname);
+    //getcwd(pathname, PATHNAME_SIZE);
+    //fprintf(stdout,"変更前のカレントディレクトリ:Before Current Directory:%s\n", pathname);
 
     //カレントディレクトリ取得（filepathへ）　by harry58034
-    getcwd(filepath, PATHNAME_SIZE);
+    //getcwd(filepath, PATHNAME_SIZE);
 
     // カレントディレクトリ変更
-    chdir(filepath); // チェンジディレクトリ
-    getcwd(pathname, PATHNAME_SIZE);
-    fprintf(stdout,"After FilePath:%s\n", pathname);
+    //chdir(filepath); // チェンジディレクトリ
+    //getcwd(pathname, PATHNAME_SIZE);
+    //fprintf(stdout,"変更後カレントディレクトリ:After Current Directory:%s\n", pathname);
 }
 //
 
@@ -117,9 +116,10 @@ void get_filelist(char *filepath){
 
 int main(void){
 
-    //清水追加分:任意のファイルパスを取得する関数の呼び出し
+    //清水追加分:指定のフォルダパスを取得する関数の呼び出し
     char filepath[256];
     get_filepath(filepath);
+    printf(filepath);
     //
 
     //桑原追加分
