@@ -18,6 +18,7 @@
 int ts_update_currenttime(char *filepath);
 int ts_update_specifiedtime(char *filepath, struct utimbuf *settime);
 int ts_update_specifiedYMD(char *filepath, int year,int month, int day, int hour, int min, int sec);
+int ts_update_input();
 //清水追加分
 void get_filepath(char *filepath);
 //
@@ -65,6 +66,25 @@ int ts_update_specifiedYMD(char *filepath, int year,int month, int day, int hour
         printf("失敗:Failure\n");
         return r;
     }
+}
+
+int ts_update_input(){
+
+    char filename[256];
+    memset(filename, '\0', 256);
+
+    int year = 0, month = 0, day = 0;
+
+    fprintf(stdout,"input file name:");
+    fscanf(stdin, "%s", &filename);
+    fprintf(stdout,"input year\n");
+    fscanf(stdin, "%d", &year);
+    fprintf(stdout,"input month：");
+    fscanf(stdin, "%d", &month);
+    fprintf(stdout,"input day：");
+    fscanf(stdin, "%d", &day);
+
+    return ts_update_specifiedYMD(filename, year,month,day,12,0,0);
 }
 
 //清水追加分
@@ -124,6 +144,7 @@ int main(void){
 
     //桑原追加分
     get_filelist(filepath);
+    //get_filelist("/Users/Masato/agilework/workspace/VBAProjects-A");
     //
 
     fprintf(stdout,"main-Function filename FilePath:%s\n", filepath);
@@ -135,7 +156,8 @@ int main(void){
 
     fprintf(stdout,"main-Function2 filename FilePath:%s\n", filepath);
 
-    ts_update_specifiedYMD(filepath, 1981,8,1,12,10,5);
+   // ts_update_specifiedYMD(filepath, 1981,8,1,12,10,5);
+    ts_update_input();
 
     printf("updata!");
     //ts_update_currenttime("test.rtf");
