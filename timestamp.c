@@ -99,11 +99,14 @@ void get_filepath(char *filepath){
     // 対象のフォルダのパスを入力、変数filepathに保管（自分の環境だと日本語が文字化けしてしまうので、英語もいれてあります）
   
     //入力のところをユーザが納得するまでループさせます。未完成。。。
-    while (i==2)
+    while (i != 1)
     {
-   
+    
     //printf("指定のフォルダのパスを入力してください:Input Specified FolderPath > ");
 	printf("Input Specified FolderPath > ");
+    //scanfは連続使用できない為、このコマンドを使用
+    rewind(stdin);
+    //
     scanf("%[^\n]%*c", filepath);
     
     fprintf(stdout,"Is this the filepath you specified? : %s\n", filepath);
