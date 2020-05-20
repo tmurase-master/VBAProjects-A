@@ -74,7 +74,8 @@ int ts_update_input(){
 
     int year = 0, month = 0, day = 0;
 
-    fprintf(stdout,"input file name:");
+    //fprintf(stdout,"input file name:");
+    fprintf(stdout,"Enter the file name for which you want to update the time stamp:");
     fscanf(stdin, "%s", &filename);
     fprintf(stdout,"input year\n");
     fscanf(stdin, "%d", &year);
@@ -97,21 +98,23 @@ void get_filepath(char *filepath){
 
     // 対象のフォルダのパスを入力、変数filepathに保管（自分の環境だと日本語が文字化けしてしまうので、英語もいれてあります）
   
+    //入力のところをユーザが納得するまでループさせます。未完成。。。
     while (i==2)
     {
    
-    printf("指定のフォルダのパスを入力してください:Input Specified FolderPath > ");
-	scanf("%[^\n]%*c", filepath);
-
+    //printf("指定のフォルダのパスを入力してください:Input Specified FolderPath > ");
+	printf("Input Specified FolderPath > ");
+    scanf("%[^\n]%*c", filepath);
+    
     fprintf(stdout,"Is this the filepath you specified? : %s\n", filepath);
     printf("Input 1(yes) or 2(no) > ");
     scanf("%d",&i);
+    //1(yes)ならループを抜けます。
+
     
-
-
     }
    
-    printf("well done\n ");
+   //printf("well done\n ");
     
     
 
@@ -139,7 +142,7 @@ void get_filelist(char *filepath){
     if (dir == NULL) {
         printf("get_filelist_失敗");
     }
-
+    printf("------Displays the files in the specified folder-----\n");
     while (1) {
         dp = readdir(dir);
         if (dp == NULL) {
@@ -148,6 +151,7 @@ void get_filelist(char *filepath){
         printf("%s\n", dp->d_name);
     }
     closedir(dir);
+    printf("-----The display is up to here----- \n");
 }
 
 int main(void){
@@ -156,14 +160,12 @@ int main(void){
     char filepath[256];
 
      get_filepath(filepath);
-    printf(filepath);
+    //fprintf(stdout,"debug::: main function filepath is : %s\n", filepath);
     //
 
     //桑原追加分
     get_filelist(filepath);
     //get_filelist("/Users/Masato/agilework/workspace/VBAProjects-A");
-    //
-
     //fprintf(stdout,"main-Function filename FilePath:%s\n", filepath);
 
 
