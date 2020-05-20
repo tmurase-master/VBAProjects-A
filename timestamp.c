@@ -91,13 +91,29 @@ void get_filepath(char *filepath){
 
    // 変数定義
     char pathname[PATHNAME_SIZE];  // ファイルパス
-
+    int i=2;
     // 変数初期化
     memset(pathname, '\0', PATHNAME_SIZE);
 
     // 対象のフォルダのパスを入力、変数filepathに保管（自分の環境だと日本語が文字化けしてしまうので、英語もいれてあります）
+  
+    while (i==2)
+    {
+   
     printf("指定のフォルダのパスを入力してください:Input Specified FolderPath > ");
 	scanf("%[^\n]%*c", filepath);
+
+    fprintf(stdout,"Is this the filepath you specified? : %s\n", filepath);
+    printf("Input 1(yes) or 2(no) > ");
+    scanf("%d",&i);
+    
+
+
+    }
+   
+    printf("well done\n ");
+    
+    
 
     //以下カレントディレクトリ関係は必要ないのでコメントアウト
     // カレントディレクトリ取得
@@ -138,7 +154,8 @@ int main(void){
 
     //清水追加分:指定のフォルダパスを取得する関数の呼び出し
     char filepath[256];
-    get_filepath(filepath);
+
+     get_filepath(filepath);
     printf(filepath);
     //
 
@@ -147,14 +164,14 @@ int main(void){
     //get_filelist("/Users/Masato/agilework/workspace/VBAProjects-A");
     //
 
-    fprintf(stdout,"main-Function filename FilePath:%s\n", filepath);
+    //fprintf(stdout,"main-Function filename FilePath:%s\n", filepath);
 
 
-    char filename[24] = "test.rtf";
-    strcat(filepath,"\\");
-    strcat(filepath,"test.rtf");
+    //char filename[24] = "test.rtf";
+    //strcat(filepath,"\\");
+    //strcat(filepath,"test.rtf");
 
-    fprintf(stdout,"main-Function2 filename FilePath:%s\n", filepath);
+    //fprintf(stdout,"main-Function2 filename FilePath:%s\n", filepath);
 
     //ts_update_specifiedYMD(filepath, 1981,8,1,12,10,5);
     ts_update_input();
