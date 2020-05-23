@@ -59,10 +59,10 @@ int ts_update_specifiedYMD(char *filepath, int year,int month, int day, int hour
     int r =utime(filepath, &ct);
     //utime("test.rtf", &ct);
     if(r == 0){
-        printf("成功:success\n");
+        printf("Success\n");
         return r;
     }else{
-        printf("失敗:Failure\n");
+        printf("Failure\n");
         return r;
     }
 }
@@ -79,9 +79,9 @@ int ts_update_input(){
     fscanf(stdin, "%s", &filename);
     fprintf(stdout,"input year\n");
     fscanf(stdin, "%d", &year);
-    fprintf(stdout,"input month：");
+    fprintf(stdout,"input month:");
     fscanf(stdin, "%d", &month);
-    fprintf(stdout,"input day：");
+    fprintf(stdout,"input day:");
     fscanf(stdin, "%d", &day);
 
     return ts_update_specifiedYMD(filename, year,month,day,12,0,0);
